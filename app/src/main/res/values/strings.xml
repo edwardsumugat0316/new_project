@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">New Project</string>
+    <string name="label_followers">Followers: </string>
+    <string name="label_following">Following: </string>
+    <string name="username">Name: </string>
+    <string name="company">Company: </string>
+    <string name="emailuser">Email: </string>
+    <string name="userblog">Blog: </string>
+    <string name="search">Search</string>
+    <string name="TextView_Notes">Notes:</string>
+    <string name="save_button">Save</string>
+</resources>
