@@ -44,5 +44,9 @@ class RepositoryImpl(private val remoteDataSource: RemoteDataSource, private val
     override fun getBio(id: Int): Bio?{
        return database.bioDao().getBio(id)
     }
+
+    override fun searchUserByName(search: String): List<UsersJsonItem> {
+        return database.userDao().searchUserByName(search)
+    }
 }
 

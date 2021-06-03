@@ -49,7 +49,6 @@ class RecyclerAdapter (var item: List<UsersJsonItem>, val context: Context) : Re
         val usersItem = item [position]
         holder.name.text = usersItem.login
 
-
         Glide.with(holder.image)
             .load(usersItem.avatar_url)
             .into(holder.image)

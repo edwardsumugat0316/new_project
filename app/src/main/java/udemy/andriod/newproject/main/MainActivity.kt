@@ -1,22 +1,21 @@
 package udemy.andriod.newproject.main
 
 import android.os.Bundle
-import android.util.Log
+import android.view.Menu
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.user_layout.*
 import kotlinx.android.synthetic.main.userslist_activity.*
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.viewmodel.ext.android.viewModel
 import udemy.andriod.newproject.R
 import udemy.andriod.newproject.base.BaseActivity
 import udemy.andriod.newproject.repository.service.model.UsersJsonItem
-import udemy.andriod.newproject.repository.service.roomdatabase.AppDatabase
 
 
 const val TAG = "MainActivity"
@@ -32,21 +31,16 @@ class MainActivity : BaseActivity(){
 
         makeAPIRequest()
 
-
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String): Boolean {
-                if(query.isNotEmpty()) {
-                }else{
-                    Toast.makeText(this@MainActivity, "No match found", Toast.LENGTH_LONG).show()
-                }
-                return false
+        search_view.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
             }
-            override fun onQueryTextChange(newText: String): Boolean {
 
-                return false
+            override fun onQueryTextChange(newText: String): Boolean {
+                viewModel.onSearch(newText)
+                return true
             }
         })
-
     }
 
     private fun makeAPIRequest() {
@@ -80,4 +74,24 @@ class MainActivity : BaseActivity(){
         })
 
     }
+
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.main_menu,menu)
+//        val search = menu?.findItem(R.id.search_menu)
+//
+//        if (search != null){
+//            val searchView = search.actionView as SearchView
+//            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+//                override fun onQueryTextSubmit(query: String?): Boolean {
+//                    return true
+//                }
+//
+//                override fun onQueryTextChange(newText: String): Boolean {
+//                    viewModel.onSearch(newText)
+//                   return true
+//                }
+//            } )
+//        }
+//        return true
+//    }
 }

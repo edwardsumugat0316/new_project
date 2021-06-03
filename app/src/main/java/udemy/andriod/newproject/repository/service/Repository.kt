@@ -21,4 +21,6 @@ interface Repository {
 
     fun getBio(id: Int): Bio?
 
+    fun searchUserByName(search: String): List<UsersJsonItem>
+
 }

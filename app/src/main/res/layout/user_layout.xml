@@ -5,261 +5,285 @@
     android:id="@+id/cv_cardView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="4dp"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?selectableItemBackground"
-    android:visibility="visible"
-    app:cardCornerRadius="10dp">
+    android:theme="@style/Theme.MaterialComponents"
+    app:cardBackgroundColor="#FFFFFF">
 
-    <RelativeLayout
-        android:id="@+id/rl_wrapper"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="-24dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="0dp">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/tb_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/purple_500"
-                android:minHeight="?attr/actionBarSize"
-                android:theme="?attr/actionBarTheme"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <View
+            android:id="@+id/view"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:background="@drawable/bg2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            app:cardCornerRadius="65dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/iv_photo"
                 android:layout_width="match_parent"
-                android:layout_height="170dp"
-                android:layout_margin="10dp"
-                android:scaleType="fitXY"
-                android:src="@mipmap/ic_launcher_round"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tb_name" />
+                android:layout_height="match_parent"
+                android:src="@mipmap/ic_launcher_round" />
+        </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:id="@+id/tv_follower"
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:layout_margin="10dp"
-                android:text="@string/label_followers"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_photo" />
+        <TextView
+            android:id="@+id/tv_follower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/label_followers"
+            android:textColor="#E6EDA5"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toBottomOf="@+id/tv_username"
+            android:fontFamily="sans-serif-smallcaps"/>
+
+        <TextView
+            android:id="@+id/tv_following"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/label_following"
+            android:textColor="#E6EDA5"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-smallcaps"
+            app:layout_constraintEnd_toEndOf="@+id/tv_username_result"
+            app:layout_constraintStart_toStartOf="@+id/tv_username_result"
+            app:layout_constraintTop_toBottomOf="@+id/tv_username_result" />
+
+        <TextView
+            android:id="@+id/tv_follower_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="200"
+            android:textColor="#E6EDA5"
+            android:textColorHint="#E6EDA5"
+            android:fontFamily="sans-serif-condensed-medium"
+            app:layout_constraintEnd_toEndOf="@+id/tv_follower"
+            app:layout_constraintStart_toStartOf="@+id/tv_follower"
+            app:layout_constraintTop_toBottomOf="@+id/tv_follower" />
+
+        <TextView
+            android:id="@+id/tv_following_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="200"
+            android:textColor="#E6EDA5"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:textColorHint="#E6EDA5"
+            app:layout_constraintEnd_toEndOf="@+id/tv_following"
+            app:layout_constraintStart_toStartOf="@+id/tv_following"
+            app:layout_constraintTop_toBottomOf="@+id/tv_following" />
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="44dp"
+            android:text="@string/username"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="sans-serif-smallcaps"/>
+
+        <TextView
+            android:id="@+id/tv_username_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:lineSpacingExtra="8sp"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toEndOf="@+id/tv_username"
+            app:layout_constraintTop_toTopOf="@+id/tv_username"
+            tools:text="TextView"
+            android:fontFamily="sans-serif-smallcaps"
+            android:letterSpacing="0.05"/>
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/company"
+            android:textColor="#51B4F6"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/textView10"
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toStartOf="@+id/textView10"
+            app:layout_constraintTop_toBottomOf="@+id/textView10"
+            android:fontFamily="sans-serif-smallcaps"/>
+
+        <TextView
+            android:fontFamily="sans-serif-condensed-medium"
+            android:id="@+id/tv_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:lineSpacingExtra="8sp"
+            android:textColor="#51B4F6"
+            android:textDirection="locale"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toBottomOf="@+id/textView8"
+            app:layout_constraintStart_toEndOf="@+id/textView8"
+            app:layout_constraintTop_toTopOf="@+id/textView8"
+            tools:text="TextView" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:background="#FFFFFF"
+            android:text="@string/emailuser"
+            android:textColor="#51B4F6"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-smallcaps"
+            app:layout_constraintEnd_toEndOf="@+id/tv_follower"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="@+id/tv_follower"
+            app:layout_constraintTop_toBottomOf="@+id/tv_follower_result" />
+
+        <TextView
+            android:id="@+id/tv_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:lineSpacingExtra="8sp"
+            android:textColor="#51B4F6"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            android:fontFamily="sans-serif-condensed-medium"
+            app:layout_constraintBottom_toBottomOf="@+id/textView10"
+            app:layout_constraintStart_toEndOf="@+id/textView10"
+            app:layout_constraintTop_toTopOf="@+id/textView10"
+            tools:text="TextView" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="@string/userblog"
+            android:textAlignment="viewStart"
+            android:textColor="#51B4F6"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/textView8"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+        <TextView
+            android:fontFamily="sans-serif-condensed-medium"
+            android:id="@+id/tv_blog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:lineSpacingExtra="8sp"
+            android:textColor="#51B4F6"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="@+id/textView12"
+            app:layout_constraintStart_toEndOf="@+id/textView12"
+            app:layout_constraintTop_toTopOf="@+id/textView12"
+            tools:text="TextView" />
 
 
-            <TextView
-                android:id="@+id/tv_following"
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="72dp"
-                android:text="@string/label_following"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/iv_photo"
-                app:layout_constraintTop_toBottomOf="@+id/iv_photo" />
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="8dp"
+            android:background="#51B4F6"
+            android:text="@string/save_button"
+            android:fontFamily="sans-serif-smallcaps"
+            app:layout_constraintEnd_toStartOf="@+id/cancel_button"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
-            <TextView
-                android:id="@+id/tv_follower_result"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="12dp"
-                app:layout_constraintStart_toEndOf="@+id/tv_follower"
-                app:layout_constraintTop_toBottomOf="@+id/iv_photo" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="136dp"
+            android:layout_marginEnd="24dp"
+            android:textColorHint="#51B4F6"
+            app:boxStrokeColor="#51B4F6"
+            app:hintTextColor="#51B4F6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView2">
 
-            <TextView
-                android:id="@+id/tv_following_result"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="1dp"
-                app:layout_constraintStart_toEndOf="@+id/tv_following"
-                app:layout_constraintTop_toTopOf="@+id/tv_following" />
-
-            <TextView
-                android:id="@+id/tv_username"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/username"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/tv_follower"
-                app:layout_constraintTop_toBottomOf="@+id/tv_follower" />
-
-            <TextView
-                android:id="@+id/tv_username_result"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="2dp"
-                android:lineSpacingExtra="8sp"
-                android:textSize="12sp"
-                app:layout_constraintStart_toEndOf="@+id/tv_username"
-                app:layout_constraintTop_toTopOf="@+id/tv_username"
-                tools:text="TextView" />
-
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="@string/company"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/tv_username"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/tv_username"
-                app:layout_constraintTop_toBottomOf="@+id/tv_username" />
-
-            <TextView
-                android:id="@+id/tv_company"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:lineSpacingExtra="8sp"
-                android:textAlignment="viewStart"
-                android:textSize="12sp"
-                app:autoSizeTextType="none"
-                app:layout_constraintStart_toEndOf="@+id/textView8"
-                app:layout_constraintTop_toBottomOf="@+id/tv_username_result"
-                tools:text="TextView" />
-
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/emailuser"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/textView8"
-                app:layout_constraintHorizontal_bias="0.064"
-                app:layout_constraintStart_toStartOf="@+id/textView8"
-                app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-            <TextView
-                android:id="@+id/tv_email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="19dp"
-                android:lineSpacingExtra="8sp"
-                android:textSize="12sp"
-                app:layout_constraintStart_toEndOf="@+id/textView10"
-                app:layout_constraintTop_toBottomOf="@+id/textView8"
-                tools:text="TextView" />
-
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/userblog"
-                android:textAlignment="viewStart"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/textView10"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/textView10"
-                app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-            <TextView
-                android:id="@+id/tv_blog"
-                android:layout_width="66dp"
-                android:layout_height="22dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="19dp"
-                android:lineSpacingExtra="8sp"
-                android:textSize="12sp"
-                app:layout_constraintStart_toEndOf="@+id/textView12"
-                app:layout_constraintTop_toBottomOf="@+id/tv_email"
-                tools:text="TextView" />
-
-            <TextView
-                android:id="@+id/tv_toolbar_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/tb_name"
-                app:layout_constraintStart_toEndOf="@+id/back_button"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.551"
-                tools:text="TextView" />
-
-            <Button
-                android:id="@+id/back_button"
-                android:layout_width="25dp"
-                android:layout_height="20dp"
-                android:background="@drawable/abc_vector_test"
-                android:fallbackLineSpacing="false"
-                android:forceDarkAllowed="false"
-                android:hapticFeedbackEnabled="false"
-                android:textSize="14sp"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="@+id/tb_name"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/TextView_Notes"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/tv_blog"
-                app:layout_constraintHorizontal_bias="0.456"
-                app:layout_constraintStart_toStartOf="@+id/textView12"
-                app:layout_constraintTop_toBottomOf="@+id/tv_blog" />
-
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_notes"
-                android:layout_width="323dp"
-                android:layout_height="118dp"
-                android:layout_marginTop="4dp"
-                android:ems="10"
-                android:inputType="textMultiLine"
-                android:singleLine="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.525"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-            <Button
-                android:id="@+id/save_button"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:text="@string/save_button"
-                app:layout_constraintEnd_toEndOf="@+id/et_notes"
-                app:layout_constraintStart_toStartOf="@+id/et_notes"
-                app:layout_constraintTop_toBottomOf="@+id/et_notes" />
+                android:ems="10"
+                android:hint="@string/TextView_Notes"
+                android:inputType="textMultiLine"
+                android:maxHeight="180dp"
+                android:textColor="@color/black"
+                android:textColorHint="#51B4F6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="366dp"
+                android:fontFamily="sans-serif-thin"
+                android:letterSpacing="0.03"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </RelativeLayout>
+        <Button
+            android:fontFamily="sans-serif-smallcaps"
+            android:id="@+id/cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="68dp"
+            android:background="#51B4F6"
+            android:text="@android:string/cancel"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.cardview.widget.CardView>
