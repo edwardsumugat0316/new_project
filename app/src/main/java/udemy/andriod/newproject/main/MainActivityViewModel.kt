@@ -39,8 +39,16 @@ class MainActivityViewModel(private val repository: Repository): ViewModel() {
             }
         }
     }
+    fun onSearch(search: String){
+        viewModelScope.launch {
+            withContext(Dispatchers.IO){
+                val searchName = repository.searchUserByName(search)
 
-
-
+                withContext(Dispatchers.Main){
+                    userListLiveData.value = searchName
+                }
+            }
+        }
+    }
 
 }

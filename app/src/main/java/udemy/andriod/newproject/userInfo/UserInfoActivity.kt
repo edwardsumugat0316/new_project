@@ -2,6 +2,7 @@ package udemy.andriod.newproject.userInfo
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.user_layout.*
@@ -46,8 +47,8 @@ class UserInfoActivity : BaseActivity(){
             }
         }
 
-        back_button.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+        cancel_button.setOnClickListener {
+            startActivity(Intent(this,MainActivity::class.java))
         }
     }
 
@@ -67,7 +68,6 @@ class UserInfoActivity : BaseActivity(){
     }
 
     private fun userInfo(user: UsersJsonItem?, bio: Bio?) {
-
         tv_follower_result.text = user?.followersCount.toString()
         tv_following_result.text = user?.followingCount.toString()
 
@@ -79,7 +79,6 @@ class UserInfoActivity : BaseActivity(){
         tv_company.text = user?.company
         tv_email.text = user?.email
         tv_blog.text = user?.blog
-        tv_toolbar_name.text = user?.login
         et_notes.setText(bio?.bio)
 
     }
