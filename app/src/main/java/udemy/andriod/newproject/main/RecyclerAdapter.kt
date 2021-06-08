@@ -14,7 +14,7 @@ import udemy.andriod.newproject.R
 import udemy.andriod.newproject.repository.service.model.UsersJsonItem
 import udemy.andriod.newproject.userInfo.UserInfoActivity
 
-class RecyclerAdapter (var item: List<UsersJsonItem>, val context: Context) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+class RecyclerAdapter (var items: List<UsersJsonItem>, val context: Context) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -24,7 +24,7 @@ class RecyclerAdapter (var item: List<UsersJsonItem>, val context: Context) : Re
         init {
             view.setOnClickListener{
                 val position: Int = bindingAdapterPosition
-                val login = item[position]
+                val login = items[position]
                 val idNumber = login.id
                 val userPlace = login.login
                 Toast.makeText(view.context, "You clicked on item id $idNumber user $userPlace", Toast.LENGTH_LONG).show()
@@ -46,7 +46,7 @@ class RecyclerAdapter (var item: List<UsersJsonItem>, val context: Context) : Re
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val usersItem = item [position]
+        val usersItem = items [position]
         holder.name.text = usersItem.login
 
         Glide.with(holder.image)
@@ -56,7 +56,12 @@ class RecyclerAdapter (var item: List<UsersJsonItem>, val context: Context) : Re
     }
 
     override fun getItemCount(): Int {
-        return item.size
+        return items.size
+    }
+
+    fun setItem(items: List<UsersJsonItem>){
+        this.items = items
+        notifyDataSetChanged()
     }
 
 }

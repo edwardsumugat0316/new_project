@@ -13,18 +13,18 @@ class RepositoryImpl(private val remoteDataSource: RemoteDataSource, private val
         return remoteDataSource.getUsers(since)
     }
 
-    override suspend fun insertUsers(users: List<UsersJsonItem>) {
+    override suspend fun getUser(login: String): UsersJsonItem {
+        return remoteDataSource.getUser(login)
+    }
+
+    override fun insertUsers(users: List<UsersJsonItem>) {
         users.forEach { user ->
             database.userDao().insertUser(user)
         }
 
     }
 
-    override suspend fun getUser(login: String): UsersJsonItem {
-        return remoteDataSource.getUser(login)
-    }
-
-    override suspend fun saveUser(user: UsersJsonItem) {
+    override fun saveUser(user: UsersJsonItem) {
         database.userDao().insertUser(user)
     }
 
