@@ -10,4 +10,5 @@ interface RemoteDataSource {
         suspend fun getUsers(since: Int) : List<UsersJsonItem>
 
         suspend fun getUser(login: String): UsersJsonItem
+
 }

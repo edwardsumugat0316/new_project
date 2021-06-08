@@ -48,6 +48,7 @@ class MainActivityViewModel(private val repository: Repository): ViewModel() {
                     userListLiveData.value = searchName
                 }
             }
+
         }
     }
 

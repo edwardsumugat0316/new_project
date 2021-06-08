@@ -10,7 +10,7 @@ interface APIRequestUser {
     @GET("users")
    suspend fun getUsers(@Query("since") since: Int): List<UsersJsonItem>
 
-
     @GET("users/{login}")
    suspend fun getUser(@Path("login") login: String): UsersJsonItem
+
 }
