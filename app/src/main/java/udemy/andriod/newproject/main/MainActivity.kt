@@ -3,6 +3,7 @@ package udemy.andriod.newproject.main
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.widget.QuickContactBadge
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
@@ -23,13 +24,13 @@ const val TAG = "MainActivity"
 class MainActivity : BaseActivity(){
     private var itemList = mutableListOf<UsersJsonItem>()
     var isLoading  = false
+    var isSearchActive = false
     private val viewModel:MainActivityViewModel by viewModel()
     private val myAdapter:RecyclerAdapter by lazy { RecyclerAdapter(itemList,this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.userslist_activity)
-
 
         makeAPIRequest()
         setUpRecyclerView()
@@ -40,7 +41,7 @@ class MainActivity : BaseActivity(){
         viewModel.userListLiveData.observe(this) {
             itemList.addAll(it)
             isLoading = false
-            viewModel.saveUsers(itemList)
+            viewModel.saveUsers(it)
 
             lifecycleScope.launch {
                 withContext(Dispatchers.Main) {
@@ -48,7 +49,13 @@ class MainActivity : BaseActivity(){
                 }
             }
         }
+
+        viewModel.searchLiveData.observe(this){
+            myAdapter.setItem(it)
+        }
+
         viewModel.loadUsers(0)
+
     }
 
     private fun setUpRecyclerView() {
@@ -59,7 +66,9 @@ class MainActivity : BaseActivity(){
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 if (!recyclerView.canScrollVertically(1)) {
                     val lastItemId=  itemList.last().id
-                    if(!isLoading){
+
+
+                    if(!isLoading && !isSearchActive){
                         viewModel.loadUsers(lastItemId)
                         isLoading = true
                         Log.d(TAG, "LALA")
@@ -72,16 +81,26 @@ class MainActivity : BaseActivity(){
     }
 
     private fun onSearch(){
-        search_view.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String): Boolean {
-                return true
-            }
 
-            override fun onQueryTextChange(newText: String): Boolean {
-                viewModel.onSearch(newText)
-                return true
-            }
-        })
+        search_view.setOnCloseListener {
+           isSearchActive = false
+            Log.d(TAG,"Close")
+            return@setOnCloseListener false
+        }
+        search_view.setOnSearchClickListener {
+            isSearchActive = true
+            Log.d(TAG,"Open")
+        }
+            search_view.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+                override fun onQueryTextSubmit(query: String): Boolean {
+                    return true
+                }
+                override fun onQueryTextChange(newText: String): Boolean {
+                    viewModel.onSearch(newText)
+                    return true
+                }
+            })
+
     }
 
 }

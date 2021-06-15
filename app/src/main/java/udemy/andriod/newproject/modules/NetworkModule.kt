@@ -1,6 +1,8 @@
 package udemy.andriod.newproject.modules
 
+import okhttp3.internal.http2.ErrorCode
 import org.koin.dsl.module
+import org.xml.sax.ErrorHandler
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -14,8 +16,6 @@ val networkModule = module {
                   .baseUrl(BASE_URL)
                   .addConverterFactory(GsonConverterFactory.create())
                   .build()
-
      }
              single { get<Retrofit>().create(APIRequestUser::class.java)}
-
 }

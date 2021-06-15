@@ -5,12 +5,12 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import udemy.andriod.newproject.modules.*
 
-class UsersName: Application() {
+class StartKoin: Application() {
 
     override fun onCreate() {
         super.onCreate()
         startKoin {
-        androidContext(this@UsersName)
+        androidContext(this@StartKoin)
             modules(dataSourceModule)
             modules(repositoryModule)
             modules(networkModule)
