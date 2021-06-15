@@ -11,12 +11,10 @@ interface UserDao {
     @Query("SELECT * FROM User")
     fun getAll(): UsersJsonItem
 
-
-
     @Query("SELECT * FROM User WHERE login = :login")
     fun getUserByLogin(login: String): UsersJsonItem?
 
-    @Query("SELECT * FROM User WHERE login LIKE :login")
+    @Query("SELECT * FROM User WHERE login LIKE '%' ||:login|| '%' ")
     fun searchUserByName(login: String): List<UsersJsonItem>
 
 

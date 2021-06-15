@@ -43,6 +43,7 @@ class UserInfoActivity : BaseActivity(){
                 viewModel.saveBio(it)
             } ?: run {
                 user?.let {viewModel.saveBio(Bio(user.id, et_notes.text.toString()))
+                    finish()
                 }
             }
         }
@@ -64,7 +65,6 @@ class UserInfoActivity : BaseActivity(){
                 }
             }
         }
-
     }
 
     private fun userInfo(user: UsersJsonItem?, bio: Bio?) {
